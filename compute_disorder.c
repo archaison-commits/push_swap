@@ -1,38 +1,40 @@
 #include "push_swap.h"
 
-double compute_disorder(t_stack *a)
+double	compute_disorder(t_stack *a)
 {
-	t_stack	*current;
-	t_stack	*compare;
-	size_t	mistakes;
-	size_t	total_pairs;
+	t_stack *current;
+	t_stack *compare;
+	size_t mistakes;
+	size_t total_pairs;
 
 	// Linked list, because why not.
-
 	mistakes = 0;
 	total_pairs = 0;
 	current = a;
-	if (!a || current->next == NULL)  // Checks if there aren't enough elements to pair.
+	if (!a || current->next == NULL)
+		// Checks if there aren't enough elements to pair.
 		return (0);
-	while (current) //Bubble loop-> very bubble very loop;
+	while (current) // Bubble loop-> very bubble very loop;
 	{
 		compare = current->next;
 		while (compare)
 		{
 			total_pairs++;
-			if (current->value > compare->value) // alternative ((*current).value > (*compare).value) pointers <3.
+			if (current->value > compare->value)
+				// alternative ((*current).value > (*compare).value) pointers <3.
 				mistakes++;
 			compare = compare->next;
 		}
 		current = current->next;
 	}
-	return ((double) mistakes/total_pairs);
+	return ((double)mistakes / total_pairs);
 }
 /*
 #include "push_swap.h"
 #include <stdio.h>
 
-int main(void)
+
+int	main(void)
 {
 	t_stack n1 = {1, NULL};
 	t_stack n2 = {2, NULL};
@@ -49,7 +51,7 @@ int main(void)
 }
 */
 /*
-function compute_disorder(stack a):
+function	compute_disorder(stack a):
 mistakes = 0
 total_pairs = 0
 for i from 0 to size(a)-1:
