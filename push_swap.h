@@ -28,6 +28,8 @@ typedef struct s_stacks
 {
 	struct t_stack	*a;
 	struct t_stack	*b;
+	int				value;
+	int				index;
 	int				c_sa;
 	int				c_sb;
 	int				c_ss;
