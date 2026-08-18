@@ -16,10 +16,21 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <string.h>
+# include <stdbool.h>
+
+typedef enum e_strategy
+{
+	SIMPLE,
+	MEDIUM,
+	COMPLEX,
+	ADAPTIVE,
+	UNDEFINE,
+}	t_strategy;
 
 typedef struct s_stack
 {
 	int				value;
+	int				index;
 	struct s_stack	*next;
 	struct s_stack	*prev;
 }				t_stack;
@@ -28,8 +39,8 @@ typedef struct s_stacks
 {
 	struct t_stack	*a;
 	struct t_stack	*b;
-	int				value;
-	int				index;
+	t_strategy		strategy;
+	bool			bench;
 	int				c_sa;
 	int				c_sb;
 	int				c_ss;
@@ -44,5 +55,8 @@ typedef struct s_stacks
 }			t_stacks;
 
 double	compute_disorder(t_stack *a);
+int		ft_strcmp(char *s1, char *s2);
+char	**ft_split(char const *s, char c);
+size_t	ft_strlcpy(char *dest, const char *src, size_t size);
 
 #endif
