@@ -1,11 +1,11 @@
 
 #include "push_swap.h"
 
-t_stack	*value_swap(t_stack *node)
+t_stack	*value_swap(t_stacks *stacks)
 {
-	if (!node)
+	if (!stacks)
 		return (0);
-	if (node-> next)
-		node = node->next;
+	if (stacks-> next)
+		stacks = stacks->next;
 	return (node);
 }
