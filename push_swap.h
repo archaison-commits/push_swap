@@ -37,6 +37,16 @@ void    ft_lstadd_back(t_stack **lst, t_stack *new);
 void    ft_lstadd_front(t_stack **lst, t_stack *new);
 void    ft_lstdelone(t_stack *lst, void (*del)(void*));
 t_stack *ft_lstlast(t_stack *lst);
-void value_swap(t_stacks *stacks);
+void 	sa(t_stacks *stacks);
+void	sb(t_stacks *stacks);
+void	ss(t_stacks *stacks);
+void	pa(t_stacks *stacks);
+void	pb(t_stacks *stacks);
+void	ra(t_stacks	*stacks);
+void	rb(t_stacks	*stacks);
+void	rr(t_stacks *stacks);
+void	rra(t_stacks *stacks);
+void	rrb(t_stacks *stacks);
+void	rrr(t_stacks *stacks);
 
 #endif
