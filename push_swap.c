@@ -73,7 +73,7 @@ int	main(int argc, char **argv)
 		{
 			numbers = ft_split(argv[j], ' ');
 			create_stack(&a, numbers);
-			free(numbers);
+			free_numbers(numbers);
 		}
 		else
 			add_number(&a, argv[j]);
