@@ -22,20 +22,3 @@ void	*ft_lstnew(void *value)
 	node->value = value;
 	node->next = NULL;
 }
-/*
-int	main(void)
-{
-	char	*content;
-	t_list  *node;
-
-	content = "help";
-	node = ft_lstnew(content);
-	node = ft_lstnew(ft_strdup("Send Help"));
-	if (!node)
-		return(1);
-	printf("content: %s\n", (char *)node->content);
-	if (node->next == NULL)
-	printf("next is: NUll\n");
-	free(node);
-	return (0);
-}*/
