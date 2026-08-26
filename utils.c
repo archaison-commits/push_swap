@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap_utils.c                                  :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mniwinsk <mniwinsk@student.42warsaw.pl>    +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/18 18:05:29 by mniwinsk          #+#    #+#             */
-/*   Updated: 2026/08/19 14:30:42 by mniwinsk         ###   ########.fr       */
+/*   Updated: 2026/08/26 14:45:28 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-/*t_stack	*ft_lstnew(int value)
+t_stack	*ft_lstnew(int value)
 {
 	t_list	*head;
 
@@ -23,7 +23,7 @@
 	head->next = NULL;
 	return (head);
 }
-*/
+
 t_stack	*ft_lstlast(t_stack *lst)
 {
 	if (!lst)
@@ -34,7 +34,7 @@ t_stack	*ft_lstlast(t_stack *lst)
 	}
 	return (lst);
 }
-/*
+
 void	ft_lstadd_back(t_stack **lst, t_stack *new)
 {
 	t_stack	*very_good_very_back;
@@ -64,4 +64,4 @@ void	ft_lstdelone(t_stack *lst, void (*del)(void*))
 		return ;
 	del(lst->value);
 	free(lst);
-}*/
+}

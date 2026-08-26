@@ -40,7 +40,6 @@ void	create_stack(t_stack **a, char **numbers)
 
 t_strategy	parsing_arg(char *arg)
 {
-
 	if (ft_strcmp(arg, "--adaptive") == 0)
 		return (ADAPTIVE);
 	else if (ft_strcmp(arg, "--simple") == 0)
@@ -57,29 +56,28 @@ int	main(int argc, char **argv)
 	t_strategy	strategy;
 	t_stack		*a;
 	char		**numbers;
-	size_t		j;
+	size_t		i;
 	bool		bench;
-
 
 	bench = false;
 	strategy = UNDEFINE;
 	a = NULL;
-	j = 1;
-	while (j < argc)
+	i = 1;
+	while (i < argc)
 	{
-		if (ft_strcmp(argv[j], "--bench") == 0)
+		if (ft_strcmp(argv[i], "--bench") == 0)
 			bench = true;
-		else if (parsing_arg(argv[j]) != UNDEFINE)
-			strategy = parsing_arg(argv[j]);
-		else if (ft_strchr(argv[j], ' '))
+		else if (parsing_arg(argv[i]) != UNDEFINE)
+			strategy = parsing_arg(argv[i]);
+		else if (ft_strchr(argv[i], ' '))
 		{
-			numbers = ft_split(argv[j], ' ');
+			numbers = ft_split(argv[i], ' ');
 			create_stack(&a, numbers);
-			free(numbers);
+			free_numbers(numbers);
 		}
 		else
-			add_number(&a, argv[j]);
-		j++;
+			add_number(&a, argv[i]);
+		i++;
 	}
 	return (0);
 }

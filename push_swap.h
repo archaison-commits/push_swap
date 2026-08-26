@@ -43,6 +43,12 @@ typedef struct s_stacks
 }			t_stacks;
 
 double	compute_disorder(t_stack *a);
+//libft
+int	is_valid_number(char *str);
+int	ft_atoi(const char *nptr);
+char	**ft_split(char const *s, char c);
+int	ft_strcmp(char *s1, char *s2);
+size_t	ft_strlcpy(char *dest, const char *src, size_t size);
 
 // Linked list functions
 t_stack	*ft_lstnew(int value);
