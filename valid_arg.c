@@ -1,24 +1,27 @@
 # include "push_swap.h"
 
-int	valid_arg(int	argc, char **argv)
+size_t	valid_arg(int	argc, char **argv)
 {
 	size_t	i;
-	size_t	errors;
+	size_t	ERROR;
 
 	i = 1;
 	errors = 0;
 	while (i < argc)
 	{
-		if (ft_strcmp(argv[i], "--adaptive") == 0)
-			return (1);
-		else if (ft_strcmp(argv[i], "--simple") == 0)
-			return (1);
-		else if (ft_strcmp(argv[i], "--medium") == 0)
-			return (1);
-		else if (ft_strcmp(argv[i], "--complex") == 0)
-			return (1);
-		else if (ft_strcmp(argv[i], "--bench") == 0)
-			return (1);
+		if (argv[i][0] == '-' && argv[i][1] == '-')
+		{
+			if ((ft_strcmp(argv[i], "--adaptive") == 0)
+				|| (ft_strcmp(argv[i], "--medium")
+				|| (ft_strcmp(argv[i], "--simple")
+				|| (ft_strcmp(argv[i], "--complex")
+			{
+				i++;
+				continue;
+			}
+		}
+		return ()
+
 
 	return (0);
 	}
