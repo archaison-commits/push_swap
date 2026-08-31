@@ -37,6 +37,13 @@ int	ft_strcmp(char *s1, char *s2)
 	return (*s1 - *s2);
 }
 
+int	ft_isdigit(int a)
+{
+	if (a >= '0' && a <= '9')
+		return (1);
+	return (0);
+}
+
 int	is_valid_number(char *str)
 {
 	size_t	i;

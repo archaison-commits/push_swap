@@ -1,7 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: brechied <brechied@student.42.pl>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/08/31 20:43:32 by brechied          #+#    #+#             */
+/*   Updated: 2026/08/31 20:43:36 by brechied         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
-# define SUCCESS 0
-# define ERROR 1
+# define SUCCESS 1
+# define ERROR 0
 
 # include <unistd.h>
 # include <stdlib.h>
@@ -20,10 +33,10 @@ typedef enum e_strategy
 
 typedef struct s_stack
 {
-	int				index;
-    int             value;
-    struct s_stack  *next;
-} t_stack;
+	int					index;
+	int					value;
+	struct s_stack		*next;
+}	t_stack;
 
 typedef struct s_stacks
 {
@@ -46,21 +59,21 @@ typedef struct s_stacks
 
 double	compute_disorder(t_stack *a);
 //libft
-int	is_valid_number(char *str);
-int	ft_atoi(const char *nptr);
+int		is_valid_number(char *str);
+int		ft_atoi(const char *nptr);
 char	**ft_split(char const *s, char c);
-int	ft_strcmp(char *s1, char *s2);
+int		ft_strcmp(char *s1, char *s2);
 size_t	ft_strlcpy(char *dest, const char *src, size_t size);
 
 // Linked list functions
 t_stack	*ft_lstnew(int value);
-void    ft_lstadd_back(t_stack **lst, t_stack *new);
-void    ft_lstadd_front(t_stack **lst, t_stack *new);
-void    ft_lstdelone(t_stack *lst, void (*del)(void*));
-t_stack *ft_lstlast(t_stack *lst);
+void	ft_lstadd_back(t_stack **lst, t_stack *new);
+void	ft_lstadd_front(t_stack **lst, t_stack *new);
+void	ft_lstdelone(t_stack *lst, void (*del)(void*));
+t_stack	*ft_lstlast(t_stack *lst);
 
 // Operator
-void 	sa(t_stacks *stacks);
+void	sa(t_stacks *stacks);
 void	sb(t_stacks *stacks);
 void	ss(t_stacks *stacks);
 void	pa(t_stacks *stacks);
