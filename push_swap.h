@@ -1,5 +1,7 @@
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
+# define SUCCESS 0
+# define ERROR 1
 
 # include <unistd.h>
 # include <stdlib.h>

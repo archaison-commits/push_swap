@@ -63,6 +63,8 @@ int	main(int argc, char **argv)
 	strategy = UNDEFINE;
 	a = NULL;
 	i = 1;
+	if (valid_arg(argc, argv) == ERROR)
+		return (ERROR);
 	while (i < argc)
 	{
 		if (ft_strcmp(argv[i], "--bench") == 0)
