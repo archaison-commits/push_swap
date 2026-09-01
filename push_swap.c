@@ -61,7 +61,7 @@ t_strategy	parsing_arg(char *arg)
 		return (MEDIUM);
 	else if (ft_strcmp(arg, "--complex") == 0)
 		return (COMPLEX);
-	return (UNDEFINE);
+	return (ADAPTIVE);
 }
 
 int	main(int argc, char **argv)
@@ -73,7 +73,7 @@ int	main(int argc, char **argv)
 	bool		bench;
 
 	bench = false;
-	strategy = UNDEFINE;
+	strategy = ADAPTIVE;
 	a = NULL;
 	i = 1;
 	if (valid_arg(argc, argv) == ERROR)
@@ -82,7 +82,7 @@ int	main(int argc, char **argv)
 	{
 		if (ft_strcmp(argv[i], "--bench") == 0)
 			bench = true;
-		else if (parsing_arg(argv[i]) != UNDEFINE)
+		else if (parsing_arg(argv[i]) != ADAPTIVE)
 			strategy = parsing_arg(argv[i]);
 		else if (ft_strchr(argv[i], ' '))
 		{

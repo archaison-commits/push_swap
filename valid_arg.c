@@ -13,6 +13,10 @@
 
 # include "push_swap.h"
 
+char	*ft_strcpy(char *s1, int length)
+{
+	while ()
+}
 int	has_digit(char *arg)
 {
 	size_t	i;
@@ -57,9 +61,13 @@ int	is_same_number(int argc, char **argv)
 	size_t	start;
 	size_t	length;
 	char	*number;
+	char	*number_cmp;
+	char	*str2;
+	char	*str1
 
 	i = 1;
 	num_l = 0;
+	start = 0;
 	number = argv[i];
 	while (number[num_l])
 	{
@@ -71,7 +79,14 @@ int	is_same_number(int argc, char **argv)
 		while (number[num_l] && number[num_l] != ' ')
 			num_l++;
 		length = num_l - start;
-
+		str1 = ft_strcpy(number[start], length);
+		i = num_l;
+		while ()
+		{
+			while (number[i] == ' ')
+				i++;
+			str2 = find_number(number[i], ' ');
+		}
 	}
 }
 
