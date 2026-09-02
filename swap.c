@@ -6,7 +6,7 @@
 /*   By: mniwinsk <mniwinsk@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/18 19:39:37 by mniwinsk          #+#    #+#             */
-/*   Updated: 2026/08/19 14:26:21 by mniwinsk         ###   ########.fr       */
+/*   Updated: 2026/09/02 12:17:31 by mniwinsk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	sa(t_stacks *stacks)
 	second->next = first;
 	stacks->a = second;
 	stacks->c_sa++;
-	write(1, "sa", 2);
+	write(1, "sa\n", 3);
 }
 
 void	sb(t_stacks *stacks)
@@ -41,7 +41,7 @@ void	sb(t_stacks *stacks)
 	second->next = first;
 	stacks->a = second;
 	stacks->c_sb++;
-	write(1, "sb", 2);
+	write(1, "sb\n", 3);
 }
 
 void	ss(t_stacks *stacks)
@@ -49,7 +49,7 @@ void	ss(t_stacks *stacks)
 	sa(stacks);
 	sb(stacks);
 	stacks->c_ss++;
-	write(1, "ss", 2);
+	write(1, "ss\n", 3);
 }
 
 /*

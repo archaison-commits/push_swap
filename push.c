@@ -6,7 +6,7 @@
 /*   By: mniwinsk <mniwinsk@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/19 13:07:31 by mniwinsk          #+#    #+#             */
-/*   Updated: 2026/08/19 14:07:14 by mniwinsk         ###   ########.fr       */
+/*   Updated: 2026/09/02 12:17:53 by mniwinsk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,10 @@ void	pa(t_stacks *stacks)
 	stacks->b = tmp;
 	stacks->a = headb;
 	stacks->c_pa++;
-	write(1, "pa", 2);
+	write(1, "pa\n", 3);
 }
 
-void	pb(t_stacks *stacsk)
+void	pb(t_stacks *stacks)
 {
 	t_stack *headb;
 	t_stack	*heada;
@@ -45,7 +45,7 @@ void	pb(t_stacks *stacsk)
 	stacks->a = tmp;
 	stacks->b = heada;
 	stacks->c_pb++;
-	write(1, "pb", 2);
+	write(1, "pb\n", 3);
 }
 /*
 int main(void)

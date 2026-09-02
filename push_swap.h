@@ -48,5 +48,8 @@ void	rr(t_stacks *stacks);
 void	rra(t_stacks *stacks);
 void	rrb(t_stacks *stacks);
 void	rrr(t_stacks *stacks);
+int		stacksize(t_stack *stack);
+int		minposition(t_stack *stack);
+void	simplesort(t_stacks *stacks);
 
 #endif

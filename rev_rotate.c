@@ -6,7 +6,7 @@
 /*   By: mniwinsk <mniwinsk@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/19 14:51:44 by mniwinsk          #+#    #+#             */
-/*   Updated: 2026/08/19 15:51:17 by mniwinsk         ###   ########.fr       */
+/*   Updated: 2026/09/02 12:16:45 by mniwinsk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	rra(t_stacks *stacks)
 	last->next = first;
 	stacks->a = last;
 	stacks->c_rra++;
-	write(1, "rra", 3);		
+	write(1, "rra\n", 4);		
 }
 
 void	rrb(t_stacks *stacks)
@@ -51,7 +51,7 @@ void	rrb(t_stacks *stacks)
 	last->next = first;
 	stacks->b = last;
 	stacks->c_rrb++;
-	write(1, "rrb", 3);
+	write(1, "rrb\n", 4);
 }
 
 void	rrr(t_stacks *stacks)
@@ -59,10 +59,10 @@ void	rrr(t_stacks *stacks)
 	rra(stacks);
 	rrb(stacks);
 	stacks->c_rrr++;
-	write(1, "rrr", 3);
+	write(1, "rrr\n", 4);
 }
 
-int main(void)
+/*int main(void)
 {
     t_stacks stacks;
 
@@ -96,4 +96,4 @@ int main(void)
     free(stacks.a);
 
     return (0);
-}
+}*/
