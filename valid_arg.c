@@ -11,12 +11,19 @@
 /* ************************************************************************** */
 
 
-# include "push_swap.h"
+#include "push_swap.h"
 
-char	*ft_strcpy(char *s1, int length)
+char	*cpy_number(char *s1, int length)
 {
-	while ()
+	size_t	i;
+	char	*new_str;
+
+	i = 0;
+	while (s1[i] && new_str[i])
+		new_str[++i] = s1[i];
+	return (new_str);
 }
+
 int	has_digit(char *arg)
 {
 	size_t	i;
@@ -54,6 +61,30 @@ int	string_number(char *arg)
 	return (SUCCESS);
 }
 
+int	check_same_number(t_stack *a)
+{
+	t_stack	*current;
+	t_stack	*compare;
+
+	// Linked list, because why not.
+	current = a;
+	if (!a || current->next == NULL)
+		// Checks if there aren't enough elements to pair.
+		return (0);
+	while (current) // Bubble loop-> very bubble very loop;
+	{
+		compare = current->next;
+		while (compare)
+		{
+			if (current->value == compare->value)
+				return (free_stack(&a)(ERROR));
+			compare = compare->next;
+		}
+		current = current->next;
+	}
+	return (SUCCESS);
+}
+/*
 int	is_same_number(int argc, char **argv)
 {
 	size_t	i;
@@ -61,9 +92,6 @@ int	is_same_number(int argc, char **argv)
 	size_t	start;
 	size_t	length;
 	char	*number;
-	char	*number_cmp;
-	char	*str2;
-	char	*str1
 
 	i = 1;
 	num_l = 0;
@@ -79,17 +107,14 @@ int	is_same_number(int argc, char **argv)
 		while (number[num_l] && number[num_l] != ' ')
 			num_l++;
 		length = num_l - start;
-		str1 = ft_strcpy(number[start], length);
-		i = num_l;
-		while ()
+		while (argv[i])
 		{
-			while (number[i] == ' ')
-				i++;
-			str2 = find_number(number[i], ' ');
+			if (check_same_number_arg(argv[i++], number, start, length) == ERROR)
+			{}
 		}
 	}
 }
-
+*/
 int	validate_numbers(int argc, char **argv)
 {
 	size_t	i;

@@ -33,7 +33,7 @@ void	add_number(t_stack **a, char *str)
 	int		value;
 
 	if (!is_valid_number(str))
-		return ;
+		return (ERROR);
 	value = ft_atoi(str);
 	new_node = ft_listnew(value);
 	ft_lstadd_back(a, new_node);
