@@ -12,19 +12,6 @@
 
 #include "push_swap.h"
 
-int	stacksize(t_stack *stack)
-{
-	int stsize;
-
-	stsize = 0;
-	while (stack != NULL)
-	{
-		stack = stack->next;
-		stsize++;
-	}
-	return (stsize);
-}
-
 int	minposition(t_stack *stack)
 {
 	int	min;

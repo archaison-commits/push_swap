@@ -51,5 +51,8 @@ void	rrr(t_stacks *stacks);
 int		stacksize(t_stack *stack);
 int		minposition(t_stack *stack);
 void	simplesort(t_stacks *stacks);
+int		minvalue(t_stack *stack);
+void	indexing(t_stacks *stacks);
+int		ft_sqrt(int nb);
 
 #endif
