@@ -6,7 +6,7 @@
 /*   By: mniwinsk <mniwinsk@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/18 19:39:37 by mniwinsk          #+#    #+#             */
-/*   Updated: 2026/09/02 12:17:31 by mniwinsk         ###   ########.fr       */
+/*   Updated: 2026/09/04 21:18:38 by mniwinsk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	sb(t_stacks *stacks)
 	t_stack	*first;
 	t_stack	*second;
 	
-	if(!stacks || stack->a == NULL || stacks->a->next == NULL)
+	if(!stacks || stacks->a == NULL || stacks->a->next == NULL)
 		return ;
 	first = stacks->b;
 	second = first->next;
@@ -76,7 +76,7 @@ int main(void)
         stacks.a->next->value,
         stacks.a->next->next->value);
 
-    sa(&stacks);
+    ss(&stacks);
 
     printf("After:  %d %d %d\n",
         stacks.a->value,

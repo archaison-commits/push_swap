@@ -12,7 +12,7 @@ typedef struct s_stack
 	int				index;
     int             value;
     struct s_stack  *next;
-} t_stack;
+}			t_stack;
 
 typedef struct s_stacks
 {
@@ -54,5 +54,6 @@ void	simplesort(t_stacks *stacks);
 int		minvalue(t_stack *stack);
 void	indexing(t_stacks *stacks);
 int		ft_sqrt(int nb);
+int		indexposition(t_stack *stack, int chunksize);
 
 #endif
