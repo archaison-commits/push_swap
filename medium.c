@@ -6,7 +6,7 @@
 /*   By: mniwinsk <mniwinsk@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/02 12:30:37 by mniwinsk          #+#    #+#             */
-/*   Updated: 2026/09/05 00:24:12 by mniwinsk         ###   ########.fr       */
+/*   Updated: 2026/09/05 20:15:06 by mniwinsk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,11 @@ int	ft_sqrt(int nb)
 
 int	indexposition(t_stack *stack, int chunksize)
 {
-	int pos;
-	int idxpos;
+	int	pos;
+	int	idxpos;
 
 	pos = 0;
-	while (stack->next != NULL)
+	while (stack)
 	{
 		if (stack->index < chunksize)
 		{
@@ -48,28 +48,53 @@ int	indexposition(t_stack *stack, int chunksize)
 		stack = stack->next;
 		pos++;
 	}
-	if (stack->index >= chunksize)
+	if (!stack || stack->index >= chunksize)
 		return (-1);
 	return (idxpos);
 }
 
-void	checker(t_stacks *stacks, int size, int idxpos, int chunk)
+void	push_swap_rotate_a(t_stacks *stacks, int size, int idxpos, int chunk)
 {
 	if (stacks->a->index >= chunk && stacks->a->next->index < chunk)
+	{
 		sa(stacks);
-	if (idxpos <= size / 2)
-		ra(stacks);
-	if (idxpos > size / 2)
-		rra(stacks);
+		pb(stacks);
+		return ;
+	}
 	if (stacks->a->index < chunk)
 		pb(stacks);
-	if (stacks->b->index == size)
-		pa(stacks);
-	if (stacks->b->index < size && stack->b->next->index == size)
+	else if (idxpos <= size / 2)
+		ra(stacks);
+	else
+		rra(stacks);
+}
+
+void	pushing_swaping_rotating_b(t_stacks *stacks, int size, int chunk)
+{
+	int		i;
+	t_stack	*tmp;
+	
+	i = 0;
+	if (!stacks->b)
+		return ;
+	tmp = stacks->b;
+	while (tmp->index != chunk)
+	{
+		tmp = tmp->next;
+		i++;
+	}
+	if (i == 1)
 		sb(stacks);
-	if (stacks->b->index < stacks->b->next->index
-		&& stacks->a>index < stacks->a->next->index)
-		ss(stacks);
+	else if (i <= size / 2)
+		while (i--)
+			rb(stacks);
+	else
+	{
+		i = size - i;
+		while (i--)
+			rrb(stacks);
+	}
+	pa(stacks);
 }
 
 void	mediumsort(t_stacks *stacks)
@@ -78,11 +103,11 @@ void	mediumsort(t_stacks *stacks)
 	int	chunk;
 	int	size;
 	int	chunksize;
-	
+
 	size = stacksize(stacks->a);
 	chunksize = ft_sqrt(size);
 	chunk = ft_sqrt(size);
-	indexing(stacks->a);
+	indexing(stacks);
 	while (stacks->a)
 	{
 		idxpos = indexposition(stacks->a, chunk);
@@ -90,13 +115,13 @@ void	mediumsort(t_stacks *stacks)
 		if (idxpos == -1)
 			chunk += chunksize;
 		else
-			checker(stacks->a, size, idxpos, chunk);
+			push_swap_rotate_a(stacks, size, idxpos, chunk);
 	}
-	chunk -= chunksize;
+	chunk = stacksize(stacks->b) - 1;
 	while (stacks->b)
 	{
 		size = stacksize(stacks->b);
-		idxpos = indexposition(stacks->b, chunk);
-		checker(stacks->b, size, idxpos, chunk);
+		pushing_swaping_rotating_b(stacks, size, chunk);
+		chunk--;
 	}
 }

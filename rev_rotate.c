@@ -6,58 +6,49 @@
 /*   By: mniwinsk <mniwinsk@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/19 14:51:44 by mniwinsk          #+#    #+#             */
-/*   Updated: 2026/09/02 12:16:45 by mniwinsk         ###   ########.fr       */
+/*   Updated: 2026/09/05 17:30:21 by mniwinsk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	rra(t_stacks *stacks)
+void	reverse(t_stack **stack)
 {
 	t_stack	*first;
 	t_stack	*last;
 	t_stack	*tmp;
 
-	if (!stacks || stacks->a == NULL || stacks->a->next == NULL)
+	if (!stack || !*stack || (*stack)->next == NULL)
 		return ;
-	last = stacks->a;
+	last = *stack;
 	last = ft_lstlast(last);
-	first = stacks->a;
-	tmp = stacks->a;
+	first = *stack;
+	tmp = *stack;
 	while (tmp->next != last)
 		tmp = tmp->next;
 	tmp->next = NULL;
 	last->next = first;
-	stacks->a = last;
+	*stack = last;
+}
+
+void	rra(t_stacks *stacks)
+{
+	reverse(&stacks->a);
 	stacks->c_rra++;
 	write(1, "rra\n", 4);		
 }
 
 void	rrb(t_stacks *stacks)
 {
-	t_stack	*first;
-	t_stack	*last;
-	t_stack *tmp;
-	
-	if (!stacks || stacks->b == NULL || stacks->b->next == NULL)
-		return ;
-	last = stacks->b;
-	last = ft_lstlast(last);
-	first = stacks->b;
-	tmp = stacks->b;
-	while (tmp->next != last)
-		tmp = tmp->next;
-	tmp->next = NULL;
-	last->next = first;
-	stacks->b = last;
+	reverse(&stacks->b);
 	stacks->c_rrb++;
 	write(1, "rrb\n", 4);
 }
 
 void	rrr(t_stacks *stacks)
 {
-	rra(stacks);
-	rrb(stacks);
+	reverse(&stacks->a);
+	reverse(&stacks->b);
 	stacks->c_rrr++;
 	write(1, "rrr\n", 4);
 }

@@ -55,5 +55,8 @@ int		minvalue(t_stack *stack);
 void	indexing(t_stacks *stacks);
 int		ft_sqrt(int nb);
 int		indexposition(t_stack *stack, int chunksize);
+void	mediumsort(t_stacks *stacks);
+void    pushing_swaping_rotating_a(t_stacks *stacks, int size, int idxpos, int chunk);
+void    pushing_swaping_rotating_b(t_stacks *stacks, int size, int chunk);
 
 #endif
