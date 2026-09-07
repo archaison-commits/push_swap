@@ -58,5 +58,7 @@ int		indexposition(t_stack *stack, int chunksize);
 void	mediumsort(t_stacks *stacks);
 void    pushing_swaping_rotating_a(t_stacks *stacks, int size, int idxpos, int chunk);
 void    pushing_swaping_rotating_b(t_stacks *stacks, int size, int chunk);
+void	complex_sort(t_stacks *stacks);
+int		how_many_bits(int size);
 
 #endif
