@@ -6,7 +6,7 @@
 /*   By: mniwinsk <mniwinsk@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/19 14:51:44 by mniwinsk          #+#    #+#             */
-/*   Updated: 2026/09/05 17:30:21 by mniwinsk         ###   ########.fr       */
+/*   Updated: 2026/09/08 21:09:21 by mniwinsk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	rra(t_stacks *stacks)
 {
 	reverse(&stacks->a);
 	stacks->c_rra++;
-	write(1, "rra\n", 4);		
+	write(1, "rra\n", 4);
 }
 
 void	rrb(t_stacks *stacks)

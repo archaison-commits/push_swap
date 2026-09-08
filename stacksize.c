@@ -6,15 +6,15 @@
 /*   By: mniwinsk <mniwinsk@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/02 14:25:57 by mniwinsk          #+#    #+#             */
-/*   Updated: 2026/09/03 18:06:41 by mniwinsk         ###   ########.fr       */
+/*   Updated: 2026/09/08 21:17:56 by mniwinsk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	stacksize(t_stack *stack)
+int	stack_size(t_stack *stack)
 {
-	int stsize;
+	int	stsize;
 
 	stsize = 0;
 	while (stack != NULL)

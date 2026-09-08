@@ -6,7 +6,7 @@
 /*   By: mniwinsk <mniwinsk@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/19 14:09:56 by mniwinsk          #+#    #+#             */
-/*   Updated: 2026/09/05 17:31:26 by mniwinsk         ###   ########.fr       */
+/*   Updated: 2026/09/08 21:12:34 by mniwinsk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ void	ra(t_stacks *stacks)
 	stacks->c_ra++;
 	write(1, "ra\n", 3);
 }
+
 void	rb(t_stacks *stacks)
 {
 	rotating(&stacks->b);

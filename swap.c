@@ -6,24 +6,24 @@
 /*   By: mniwinsk <mniwinsk@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/18 19:39:37 by mniwinsk          #+#    #+#             */
-/*   Updated: 2026/09/05 17:29:34 by mniwinsk         ###   ########.fr       */
+/*   Updated: 2026/09/08 21:10:43 by mniwinsk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void    swaping(t_stack **stack)
+void	swaping(t_stack **stack)
 {
-    t_stack *first;
-    t_stack *second;
+	t_stack	*first;
+	t_stack	*second;
 
-    if (!stack || !*stack || (*stack)->next == NULL)
-        return ;
-    first = *stack;
-    second = first->next;
-    first->next = second->next;
-    second->next = first;
-    *stack = second;
+	if (!stack || !*stack || (*stack)->next == NULL)
+		return ;
+	first = *stack;
+	second = first->next;
+	first->next = second->next;
+	second->next = first;
+	*stack = second;
 }
 
 void	sa(t_stacks *stacks)

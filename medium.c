@@ -6,13 +6,13 @@
 /*   By: mniwinsk <mniwinsk@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/02 12:30:37 by mniwinsk          #+#    #+#             */
-/*   Updated: 2026/09/05 20:15:06 by mniwinsk         ###   ########.fr       */
+/*   Updated: 2026/09/08 21:20:11 by mniwinsk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_sqrt(int nb)
+static int	ft_sqrt(int nb)
 {
 	int	i;
 
@@ -32,7 +32,7 @@ int	ft_sqrt(int nb)
 	return (i);
 }
 
-int	indexposition(t_stack *stack, int chunksize)
+static int	index_position(t_stack *stack, int chunksize)
 {
 	int	pos;
 	int	idxpos;
@@ -53,7 +53,7 @@ int	indexposition(t_stack *stack, int chunksize)
 	return (idxpos);
 }
 
-void	push_swap_rotate_a(t_stacks *stacks, int size, int idxpos, int chunk)
+static void	ops_on_a(t_stacks *stacks, int size, int idxpos, int chunk)
 {
 	if (stacks->a->index >= chunk && stacks->a->next->index < chunk)
 	{
@@ -69,11 +69,11 @@ void	push_swap_rotate_a(t_stacks *stacks, int size, int idxpos, int chunk)
 		rra(stacks);
 }
 
-void	pushing_swaping_rotating_b(t_stacks *stacks, int size, int chunk)
+static void	pushing_swaping_rotating_b(t_stacks *stacks, int size, int chunk)
 {
 	int		i;
 	t_stack	*tmp;
-	
+
 	i = 0;
 	if (!stacks->b)
 		return ;
@@ -83,9 +83,7 @@ void	pushing_swaping_rotating_b(t_stacks *stacks, int size, int chunk)
 		tmp = tmp->next;
 		i++;
 	}
-	if (i == 1)
-		sb(stacks);
-	else if (i <= size / 2)
+	if (i <= size / 2)
 		while (i--)
 			rb(stacks);
 	else
@@ -104,23 +102,23 @@ void	mediumsort(t_stacks *stacks)
 	int	size;
 	int	chunksize;
 
-	size = stacksize(stacks->a);
+	size = stack_size(stacks->a);
 	chunksize = ft_sqrt(size);
 	chunk = ft_sqrt(size);
 	indexing(stacks);
 	while (stacks->a)
 	{
-		idxpos = indexposition(stacks->a, chunk);
-		size = stacksize(stacks->a);
+		idxpos = index_position(stacks->a, chunk);
+		size = stack_size(stacks->a);
 		if (idxpos == -1)
 			chunk += chunksize;
 		else
-			push_swap_rotate_a(stacks, size, idxpos, chunk);
+			ops_on_a(stacks, size, idxpos, chunk);
 	}
-	chunk = stacksize(stacks->b) - 1;
+	chunk = stack_size(stacks->b) - 1;
 	while (stacks->b)
 	{
-		size = stacksize(stacks->b);
+		size = stack_size(stacks->b);
 		pushing_swaping_rotating_b(stacks, size, chunk);
 		chunk--;
 	}

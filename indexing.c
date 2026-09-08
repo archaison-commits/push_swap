@@ -6,7 +6,7 @@
 /*   By: mniwinsk <mniwinsk@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/02 15:48:56 by mniwinsk          #+#    #+#             */
-/*   Updated: 2026/09/03 22:23:04 by mniwinsk         ###   ########.fr       */
+/*   Updated: 2026/09/08 21:08:07 by mniwinsk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	minvalue(t_stack *stack)
 void	indexing(t_stacks *stacks)
 {
 	t_stack	*tmp;
-	t_stack *stack;
+	t_stack	*stack;
 	int		min;
 	int		idx;
 	int		size;
