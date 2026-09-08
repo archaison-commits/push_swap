@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: brechied <brechied@student.42.pl>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/31 20:43:44 by brechied          #+#    #+#             */
-/*   Updated: 2026/08/31 20:44:01 by brechied         ###   ########.fr       */
+/*   Updated: 2026/09/08 17:37:20 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	free_numbers(char **numbers)
 	free(numbers);
 }
 
-void	add_number(t_stack **a, char *str)
+int	add_number(t_stack **a, char *str)
 {
 	t_stack	*new_node;
 	int		value;
@@ -36,7 +36,10 @@ void	add_number(t_stack **a, char *str)
 		return (ERROR);
 	value = ft_atoi(str);
 	new_node = ft_listnew(value);
+	if (!new_node)
+		return (ERROR);
 	ft_lstadd_back(a, new_node);
+	return (SUCCESS);
 }
 
 void	create_stack(t_stack **a, char **numbers)

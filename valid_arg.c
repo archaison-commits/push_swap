@@ -13,6 +13,7 @@
 
 #include "push_swap.h"
 
+
 char	*cpy_number(char *s1, int length)
 {
 	size_t	i;
@@ -66,18 +67,16 @@ int	check_same_number(t_stack *a)
 	t_stack	*current;
 	t_stack	*compare;
 
-	// Linked list, because why not.
 	current = a;
 	if (!a || current->next == NULL)
-		// Checks if there aren't enough elements to pair.
 		return (0);
-	while (current) // Bubble loop-> very bubble very loop;
-	{
+	while (current)
+		{
 		compare = current->next;
 		while (compare)
 		{
 			if (current->value == compare->value)
-				return (free_stack(&a)(ERROR));
+				return (ERROR);
 			compare = compare->next;
 		}
 		current = current->next;
