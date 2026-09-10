@@ -12,7 +12,20 @@
 
 #include "push_swap.h"
 
-int	minvalue(t_stack *stack)
+int	stack_size(t_stack *stack)
+{
+	int	stsize;
+
+	stsize = 0;
+	while (stack != NULL)
+	{
+		stack = stack->next;
+		stsize++;
+	}
+	return (stsize);
+}
+
+int	min_value(t_stack *stack)
 {
 	int	min;
 
@@ -38,12 +51,12 @@ void	indexing(t_stacks *stacks)
 	int		idx;
 	int		size;
 
-	size = stacksize(stacks->a);
+	size = stack_size(stacks->a);
 	idx = 0;
 	tmp = stacks->a;
 	while (idx < size)
 	{
-		min = minvalue(tmp);
+		min = min_value(tmp);
 		stack = tmp;
 		while (stack)
 		{
@@ -57,59 +70,3 @@ void	indexing(t_stacks *stacks)
 		idx++;
 	}
 }
-
-/*
-int main(void)
-{
-    t_stacks stacks;
-    t_stack a;
-    t_stack b;
-    t_stack c;
-    t_stack d;
-    t_stack e;
-    t_stack *tmp;
-
-    a.value = 42;
-    a.index = -1;
-    a.next = &b;
-
-    b.value = 10;
-    b.index = -1;
-    b.next = &c;
-
-    c.value = 35;
-    c.index = -1;
-    c.next = &d;
-
-    d.value = 7;
-    d.index = -1;
-    d.next = &e;
-
-    e.value = 25;
-    e.index = -1;
-    e.next = NULL;
-
-    stacks.a = &a;
-    stacks.b = NULL;
-
-    printf("PRZED:\n");
-    tmp = stacks.a;
-    while (tmp)
-    {
-        printf("value: %d, index: %d\n", tmp->value, tmp->index);
-        tmp = tmp->next;
-    }
-
-    indexing(&stacks);
-
-    printf("\nPO:\n");
-    tmp = stacks.a;
-    while (tmp)
-    {
-        printf("value: %d, index: %d\n", tmp->value, tmp->index);
-        tmp = tmp->next;
-    }
-
-    return (0);
-}
-*/

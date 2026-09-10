@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-void	rotating(t_stack **stack)
+static void	rotating(t_stack **stack)
 {
 	t_stack	*first;
 	t_stack	*last;
@@ -31,23 +31,32 @@ void	rotating(t_stack **stack)
 
 void	ra(t_stacks *stacks)
 {
+	if (!stacks)
+		return ;
 	rotating(&stacks->a);
 	stacks->c_ra++;
+	stacks->c_total++;
 	write(1, "ra\n", 3);
 }
 
 void	rb(t_stacks *stacks)
 {
+	if (!stacks)
+		return ;
 	rotating(&stacks->b);
 	stacks->c_rb++;
+	stacks->c_total++;
 	write(1, "rb\n", 3);
 }
 
 void	rr(t_stacks *stacks)
 {
+	if (!stacks)
+		return ;
 	rotating(&stacks->a);
 	rotating(&stacks->b);
 	stacks->c_rr++;
+	stacks->c_total++;
 	write(1, "rr\n", 3);
 }
 /*

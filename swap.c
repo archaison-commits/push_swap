@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-void	swaping(t_stack **stack)
+static void	swaping(t_stack **stack)
 {
 	t_stack	*first;
 	t_stack	*second;
@@ -28,55 +28,31 @@ void	swaping(t_stack **stack)
 
 void	sa(t_stacks *stacks)
 {
+	if (!stacks)
+		return ;
 	swaping(&stacks->a);
 	stacks->c_sa++;
+	stacks->c_total++;
 	write(1, "sa\n", 3);
 }
 
 void	sb(t_stacks *stacks)
 {
+	if (!stacks)
+		return ;
 	swaping(&stacks->b);
 	stacks->c_sb++;
+	stacks->c_total++;
 	write(1, "sb\n", 3);
 }
 
 void	ss(t_stacks *stacks)
 {
+	if (!stacks)
+		return ;
 	swaping(&stacks->a);
 	swaping(&stacks->b);
 	stacks->c_ss++;
+	stacks->c_total++;
 	write(1, "ss\n", 3);
 }
-
-/*
-int main(void)
-{
-    t_stack a;
-    t_stack b;
-    t_stack c;
-    t_stacks stacks;
-
-    a.value = 1;
-    a.next = &b;
-
-    b.value = 2;
-    b.next = &c;
-    c.value = 3;
-    c.next = NULL;
-
-    stacks.a = &a;
-
-    printf("Before: %d %d %d\n",
-        stacks.a->value,
-        stacks.a->next->value,
-        stacks.a->next->next->value);
-
-    ss(&stacks);
-
-    printf("After:  %d %d %d\n",
-        stacks.a->value,
-        stacks.a->next->value,
-        stacks.a->next->next->value);
-
-    return (0);
-}*/

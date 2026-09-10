@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-int	minposition(t_stack *stack)
+static int	min_position(t_stack *stack)
 {
 	int	min;
 	int	pos;
@@ -34,7 +34,7 @@ int	minposition(t_stack *stack)
 	return (posmin);
 }
 
-void	simplesort(t_stacks *stacks)
+void	simple_sort(t_stacks *stacks)
 {
 	int		minpos;
 	int		size;
@@ -42,7 +42,7 @@ void	simplesort(t_stacks *stacks)
 	while (stacks->a)
 	{
 		size = stack_size(stacks->a);
-		minpos = minposition(stacks->a);
+		minpos = min_position(stacks->a);
 		if (minpos <= size / 2)
 			while (minpos--)
 				ra(stacks);

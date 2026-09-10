@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mniwinsk <mniwinsk@student.42warsaw.pl>    +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/18 18:05:29 by mniwinsk          #+#    #+#             */
-/*   Updated: 2026/09/03 22:25:48 by mniwinsk         ###   ########.fr       */
+/*   Updated: 2026/09/08 17:22:08 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-/*t_stack	*ft_lstnew(int value)
+t_stack	*ft_lstnew(int value)
 {
-	t_list	*head;
+	t_stack	*head;
 
 	head = malloc(sizeof(t_stack));
 	if (!head)
@@ -24,7 +24,7 @@
 	head->next = NULL;
 	return (head);
 }
-*/
+
 t_stack	*ft_lstlast(t_stack *lst)
 {
 	if (!lst)
@@ -35,7 +35,7 @@ t_stack	*ft_lstlast(t_stack *lst)
 	}
 	return (lst);
 }
-/*
+
 void	ft_lstadd_back(t_stack **lst, t_stack *new)
 {
 	t_stack	*very_good_very_back;
@@ -59,10 +59,26 @@ void	ft_lstadd_front(t_stack **lst, t_stack *new)
 	*lst = new;
 }
 
-void	ft_lstdelone(t_stack *lst, void (*del)(void*))
+void	ft_lstdelone(t_stack *lst)
 {
-	if (!del || !lst)
+	if (!lst)
 		return ;
-	del(lst->value);
 	free(lst);
-}*/
+}
+
+void	ft_lstclear(t_stack **lst)
+{
+	t_stack	*current;
+	t_stack	*next;
+
+	if (!lst)
+		return ;
+	current = *lst;
+	while (current)
+	{
+		next = current->next;
+		free(current);
+		current = next;
+	}
+	*lst = NULL;
+}

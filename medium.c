@@ -95,7 +95,7 @@ static void	pushing_swaping_rotating_b(t_stacks *stacks, int size, int chunk)
 	pa(stacks);
 }
 
-void	mediumsort(t_stacks *stacks)
+void	medium_sort(t_stacks *stacks)
 {
 	int	idxpos;
 	int	chunk;

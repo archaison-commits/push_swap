@@ -33,7 +33,7 @@ void	complex_sort(t_stacks *stacks)
 	int	j;
 
 	indexing(stacks);
-	size = stacksize(stacks->a);
+	size = stack_size(stacks->a);
 	bits = how_many_bits(size - 1);
 	i = 0;
 	while (i < bits)
