@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/31 20:43:44 by brechied          #+#    #+#             */
-/*   Updated: 2026/09/08 17:37:20 by marvin           ###   ########.fr       */
+/*   Updated: 2026/09/11 03:35:37 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	add_number(t_stack **a, char *str)
 	if (!is_valid_number(str))
 		return (ERROR);
 	value = ft_atoi(str);
-	new_node = ft_listnew(value);
+	new_node = ft_lstnew(value);
 	if (!new_node)
 		return (ERROR);
 	ft_lstadd_back(a, new_node);
@@ -54,7 +54,7 @@ void	create_stack(t_stack **a, char **numbers)
 	}
 }
 
-t_strategy	parsing_arg(char *arg)
+t_strategy	parsing_strategy(char *arg)
 {
 	if (ft_strcmp(arg, "--adaptive") == 0)
 		return (ADAPTIVE);
@@ -67,42 +67,74 @@ t_strategy	parsing_arg(char *arg)
 	return (ADAPTIVE);
 }
 
-int	main(int argc, char **argv)
+void	choose_strategy(t_strategy strat, double disorder, t_stacks *stacks)
 {
-	t_strategy	strategy;
-	t_stack		*a;
-	char		**numbers;
-	size_t		i;
-	bool		bench;
 
-	bench = false;
-	strategy = ADAPTIVE;
-	a = NULL;
+	if (strat == SIMPLE)
+		simple_sort(stacks);
+	else if (strat == MEDIUM)
+		medium_sort(stacks);
+	else if (strat == COMPLEX)
+		complex_sort(stacks);
+	if (strat == ADAPTIVE)
+	{
+		if (disorder < 0.2)
+			simple_sort(stacks);
+		else if (disorder >= 0.2 && disorder < 0.5)
+			medium_sort(stacks);
+		else if (disorder >= 0.5)
+			complex_sort(stacks);
+	}
+
+}
+
+int	parse_args(int argc, char **argv, t_stacks *stacks,
+		t_strategy *strategy, bool *bench)
+{
+	int		i;
+	char	**numbers;
+
 	i = 1;
-	if (valid_arg(argc, argv) == ERROR)
-		return (ERROR);
 	while (i < argc)
 	{
 		if (ft_strcmp(argv[i], "--bench") == 0)
-			bench = true;
-		else if (parsing_arg(argv[i]) != ADAPTIVE)
-			strategy = parsing_arg(argv[i]);
+			*bench = true;
+		else if (parsing_strategy(argv[i]) != ADAPTIVE)
+			*strategy = parsing_strategy(argv[i]);
 		else if (ft_strchr(argv[i], ' '))
 		{
 			numbers = ft_split(argv[i], ' ');
-			create_stack(&a, numbers);
+			create_stack(&stacks->a, numbers);
 			free_numbers(numbers);
 		}
 		else
-			add_number(&a, argv[i]);
+			add_number(&stacks->a, argv[i]);
 		i++;
 	}
+	return (SUCCESS);
+}
+
+int	main(int argc, char **argv)
+{
+	t_strategy	strategy;
+	t_stacks	stacks;
+	bool		bench;
+
+	stacks.a = NULL;
+	stacks.b = NULL;
+	strategy = ADAPTIVE;
+	bench = false;
+
+	if (valid_arg(argc, argv) == ERROR)
+		return (write(1, "ERROR\n", 5), ERROR);
+	if (parse_args(argc, argv, &stacks, &strategy, &bench) == ERROR)
+		return (write(1, "ERROR\n", 5), ERROR);
+	if (check_same_number(stacks.a) == ERROR)
+	{
+		ft_lstclear(&stacks.a);
+		return (write(1, "ERROR\n", 5), ERROR);
+	}
+	choose_strategy(strategy, compute_disorder(stacks.a), &stacks);
+	ft_lstclear(&stacks.a);
 	return (0);
 }
-// sa sb - ss √
-
-// pa pb
-
-// ra rb rr
-
-// rra rrb rrr
