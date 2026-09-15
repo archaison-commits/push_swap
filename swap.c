@@ -6,82 +6,53 @@
 /*   By: mniwinsk <mniwinsk@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/18 19:39:37 by mniwinsk          #+#    #+#             */
-/*   Updated: 2026/08/19 14:26:21 by mniwinsk         ###   ########.fr       */
+/*   Updated: 2026/09/08 21:10:43 by mniwinsk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	sa(t_stacks *stacks)
+static void	swaping(t_stack **stack)
 {
-	t_stack *first;
+	t_stack	*first;
 	t_stack	*second;
-	
-	if (!stacks || stacks->a == NULL || stacks->a->next == NULL)
+
+	if (!stack || !*stack || (*stack)->next == NULL)
 		return ;
-	first = stacks->a;
+	first = *stack;
 	second = first->next;
 	first->next = second->next;
 	second->next = first;
-	stacks->a = second;
+	*stack = second;
+}
+
+void	sa(t_stacks *stacks)
+{
+	if (!stacks)
+		return ;
+	swaping(&stacks->a);
 	stacks->c_sa++;
-	write(1, "sa", 2);
+	stacks->c_total++;
+	write(1, "sa\n", 3);
 }
 
 void	sb(t_stacks *stacks)
 {
-	t_stack	*first;
-	t_stack	*second;
-	
-	if(!stacks || stack->a == NULL || stacks->a->next == NULL)
+	if (!stacks)
 		return ;
-	first = stacks->b;
-	second = first->next;
-	first->next = second->next;
-	second->next = first;
-	stacks->a = second;
+	swaping(&stacks->b);
 	stacks->c_sb++;
-	write(1, "sb", 2);
+	stacks->c_total++;
+	write(1, "sb\n", 3);
 }
 
 void	ss(t_stacks *stacks)
 {
-	sa(stacks);
-	sb(stacks);
+	if (!stacks)
+		return ;
+	swaping(&stacks->a);
+	swaping(&stacks->b);
 	stacks->c_ss++;
-	write(1, "ss", 2);
+	stacks->c_total++;
+	write(1, "ss\n", 3);
 }
-
-/*
-int main(void)
-{
-    t_stack a;
-    t_stack b;
-    t_stack c;
-    t_stacks stacks;
-
-    a.value = 1;
-    a.next = &b;
-
-    b.value = 2;
-    b.next = &c;
-
-    c.value = 3;
-    c.next = NULL;
-
-    stacks.a = &a;
-
-    printf("Before: %d %d %d\n",
-        stacks.a->value,
-        stacks.a->next->value,
-        stacks.a->next->next->value);
-
-    sa(&stacks);
-
-    printf("After:  %d %d %d\n",
-        stacks.a->value,
-        stacks.a->next->value,
-        stacks.a->next->next->value);
-
-    return (0);
-}*/

@@ -6,56 +6,58 @@
 /*   By: mniwinsk <mniwinsk@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/19 14:09:56 by mniwinsk          #+#    #+#             */
-/*   Updated: 2026/08/19 14:50:50 by mniwinsk         ###   ########.fr       */
+/*   Updated: 2026/09/08 21:12:34 by mniwinsk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ra(t_stacks *stacks)
+static void	rotating(t_stack **stack)
 {
 	t_stack	*first;
 	t_stack	*last;
 	t_stack	*tmp;
 
-	if (!stacks || stacks->a == NULL || stacks->a->next == NULL)
+	if (!stack || !*stack || (*stack)->next == NULL)
 		return ;
-	last = stacks->a;
+	last = *stack;
 	last = ft_lstlast(last);
-	first = stacks->a;
+	first = *stack;
 	tmp = first->next;
 	first->next = last->next;
 	last->next = first;
-	stacks->a = tmp;
+	*stack = tmp;
+}
+
+void	ra(t_stacks *stacks)
+{
+	if (!stacks)
+		return ;
+	rotating(&stacks->a);
 	stacks->c_ra++;
-	write(1, "ra", 2);
+	stacks->c_total++;
+	write(1, "ra\n", 3);
 }
 
 void	rb(t_stacks *stacks)
 {
-	t_stack	*first;
-	t_stack	*last;
-	t_stack	*tmp;
-	
-	if (!stacks || stacks->a == NULL || stacks->a->next == NULL)
-		return	;
-	last = stacks->b;
-	last = ft_lstlast(last);
-	first = stacks->b;
-	tmp = first->next;
-	first->next = last->next;
-	last->next = first;
-	stacks->b = tmp;
+	if (!stacks)
+		return ;
+	rotating(&stacks->b);
 	stacks->c_rb++;
-	write(1, "rb", 2);
+	stacks->c_total++;
+	write(1, "rb\n", 3);
 }
 
 void	rr(t_stacks *stacks)
 {
-	ra(stacks);
-	rb(stacks);
+	if (!stacks)
+		return ;
+	rotating(&stacks->a);
+	rotating(&stacks->b);
 	stacks->c_rr++;
-	write(1, "rr", 2);
+	stacks->c_total++;
+	write(1, "rr\n", 3);
 }
 /*
 int main(void)

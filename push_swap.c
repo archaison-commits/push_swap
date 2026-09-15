@@ -78,6 +78,8 @@ void	choose_strategy(t_strategy strat, double disorder, t_stacks *stacks)
 		complex_sort(stacks);
 	if (strat == ADAPTIVE)
 	{
+		if (disorder == 0)
+			return ;
 		if (disorder < 0.2)
 			simple_sort(stacks);
 		else if (disorder >= 0.2 && disorder < 0.5)
@@ -89,16 +91,17 @@ void	choose_strategy(t_strategy strat, double disorder, t_stacks *stacks)
 }
 
 int	parse_args(int argc, char **argv, t_stacks *stacks,
-		t_strategy *strategy, bool *bench)
+		t_strategy *strategy)
 {
 	int		i;
 	char	**numbers;
 
+	stacks->bench = NULL;
 	i = 1;
 	while (i < argc)
 	{
 		if (ft_strcmp(argv[i], "--bench") == 0)
-			*bench = true;
+			stacks->bench = true;
 		else if (parsing_strategy(argv[i]) != ADAPTIVE)
 			*strategy = parsing_strategy(argv[i]);
 		else if (ft_strchr(argv[i], ' '))
@@ -118,23 +121,21 @@ int	main(int argc, char **argv)
 {
 	t_strategy	strategy;
 	t_stacks	stacks;
-	bool		bench;
 
-	stacks.a = NULL;
-	stacks.b = NULL;
 	strategy = ADAPTIVE;
-	bench = false;
-
+	stacks = (t_stacks){0};
 	if (valid_arg(argc, argv) == ERROR)
 		return (write(1, "ERROR\n", 5), ERROR);
-	if (parse_args(argc, argv, &stacks, &strategy, &bench) == ERROR)
+	if (parse_args(argc, argv, &stacks, &strategy) == ERROR)
 		return (write(1, "ERROR\n", 5), ERROR);
 	if (check_same_number(stacks.a) == ERROR)
 	{
 		ft_lstclear(&stacks.a);
 		return (write(1, "ERROR\n", 5), ERROR);
 	}
-	choose_strategy(strategy, compute_disorder(stacks.a), &stacks);
+	choose_strategy(strategy, compute_disorder(&stacks), &stacks);
+	if (stacks.bench)
+		print_bench(strategy, &stacks);
 	ft_lstclear(&stacks.a);
 	return (0);
 }

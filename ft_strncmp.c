@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "push_swap.h"
 
 int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
@@ -23,6 +23,19 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 			return ((unsigned char )s1[i] - (unsigned char ) s2[i]);
 		i++;
 	}
+	return (0);
+}
+
+char	*ft_strchr(const char *s, int c)
+{
+	while (*s)
+	{
+		if (*s == (char)c)
+			return ((char *)s);
+		s++;
+	}
+	if (c == 0)
+		return ((char *)s);
 	return (0);
 }
 /*

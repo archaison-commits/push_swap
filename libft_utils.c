@@ -40,8 +40,8 @@ int	ft_strcmp(char *s1, char *s2)
 int	ft_isdigit(int a)
 {
 	if (a >= '0' && a <= '9')
-		return (1);
-	return (0);
+		return (SUCCESS);
+	return (ERROR);
 }
 
 int	is_valid_number(char *str)
@@ -55,11 +55,13 @@ int	is_valid_number(char *str)
 		return (0);
 	while (str[i])
 	{
+		while (ft_strchr(&str[i], ' '))
+			i++;
 		if (!ft_isdigit(str[i]))
-			return (0);
+			return (ERROR);
 		i++;
 	}
-	return (1);
+	return (SUCCESS);
 }
 
 size_t	ft_strlcpy(char *dest, const char *src, size_t size)

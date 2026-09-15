@@ -14,12 +14,13 @@
 
 t_stack	*ft_lstnew(int value)
 {
-	t_list	*head;
+	t_stack	*head;
 
 	head = malloc(sizeof(t_stack));
 	if (!head)
 		return (NULL);
 	head->value = value;
+	head->index = -1;
 	head->next = NULL;
 	return (head);
 }

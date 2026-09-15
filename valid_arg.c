@@ -36,7 +36,7 @@ int	check_same_number(t_stack *a)
 	if (!a || current->next == NULL)
 		return (0);
 	while (current)
-		{
+	{
 		compare = current->next;
 		while (compare)
 		{
