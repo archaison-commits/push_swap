@@ -19,7 +19,6 @@
 # include <stdlib.h>
 # include <string.h>
 # include <stdbool.h>
-# include <stdio.h>
 # include "ft_printf/ft_printf.h"
 
 typedef enum e_strategy

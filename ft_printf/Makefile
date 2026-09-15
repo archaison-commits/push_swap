@@ -10,7 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME = libftprintf.a
+NAME = ft_printf
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
 SRC = \
