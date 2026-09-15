@@ -20,6 +20,7 @@
 # include <string.h>
 # include <stdbool.h>
 # include <stdio.h>
+# include "ft_printf/ft_printf.h"
 
 typedef enum e_strategy
 {
@@ -75,6 +76,7 @@ int			ft_strcmp(char *s1, char *s2);
 char		*ft_strchr(const char *s, int c);
 int			ft_isdigit(int a);
 int			is_valid_flag(char *arg);
+int			ft_lstsize(t_stack *lst);
 
 // Linked list functions
 t_stack		*ft_lstnew(int value);

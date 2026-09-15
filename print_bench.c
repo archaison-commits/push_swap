@@ -15,37 +15,40 @@
 static char	*algorithm_type(double disorder)
 {
 	if (disorder < 0.2)
-		return ("Adaptive O(n2)");
+		return ("Adaptive / O(n2)");
 	if (disorder < 0.5)
-		return ("Adaptive O(n√n)");
-	return ("Adaptive O(n log n)");
+		return ("Adaptive / O(n√n)");
+	return ("Adaptive / O(n log n)");
 }
 
 static char	*strategy_name(t_strategy strategy, t_stacks *stacks)
 {
 	if (strategy == SIMPLE)
-		return ("Simple O(n2)");
+		return ("Simple / O(n2)");
 	if (strategy == MEDIUM)
-		return ("Medium O(n√n)");
+		return ("Medium / O(n√n)");
 	if (strategy == COMPLEX)
-		return ("Complex O(n log n)");
+		return ("Complex / O(n log n)");
 	return (algorithm_type(stacks->disorder));
 }
 
 void	print_bench(t_strategy strategy, t_stacks *stacks)
 {
-	printf("[bench] disorder: %.2f%%\n", stacks->disorder * 100);
-	printf("[bench] strategy: %s\n", strategy_name(strategy, stacks));
-	printf("[bench] total: %d\n", stacks->c_total);
-	printf("[bench] sa: %d ", stacks->c_sa);
-	printf("sb: %d ", stacks->c_sb);
-	printf("ss: %d ", stacks->c_ss);
-	printf("pa: %d ", stacks->c_pa);
-	printf("pb: %d\n", stacks->c_pb);
-	printf("[bench] ra: %d ", stacks->c_ra);
-	printf("rb: %d ", stacks->c_rb);
-	printf("rr: %d ", stacks->c_rr);
-	printf("rra: %d ", stacks->c_rra);
-	printf("rrb: %d ", stacks->c_rrb);
-	printf("rrr: %d\n", stacks->c_rrr);
+	double	dis;
+
+	dis = stacks->disorder;
+	ft_printf("[bench] disorder: %P\n", dis);
+	ft_printf("[bench] strategy: %s\n", strategy_name(strategy, stacks));
+	ft_printf("[bench] total_ops: %d\n", stacks->c_total);
+	ft_printf("[bench] sa: %d ", stacks->c_sa);
+	ft_printf("sb: %d ", stacks->c_sb);
+	ft_printf("ss: %d ", stacks->c_ss);
+	ft_printf("pa: %d ", stacks->c_pa);
+	ft_printf("pb: %d\n", stacks->c_pb);
+	ft_printf("[bench] ra: %d ", stacks->c_ra);
+	ft_printf("rb: %d ", stacks->c_rb);
+	ft_printf("rr: %d ", stacks->c_rr);
+	ft_printf("rra: %d ", stacks->c_rra);
+	ft_printf("rrb: %d ", stacks->c_rrb);
+	ft_printf("rrr: %d\n", stacks->c_rrr);
 }

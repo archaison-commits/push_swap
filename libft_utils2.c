@@ -115,15 +115,4 @@ char	**ft_split(char const *s, char c)
 		return (NULL);
 	return (array);
 }
-/*
-int	main(void)
-{
-	char	*s;
-	char	**a;
 
-	s = "Hello send me to the hospital, mate!";
-	a = ft_split(s, ' ');
-	while (*a)
-		printf("%s\n", *a++);
-	return (0);
-}*/
