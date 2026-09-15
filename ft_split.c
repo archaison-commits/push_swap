@@ -12,7 +12,30 @@
 
 #include "push_swap.h"
 
-int	mem_all(char **array, int pos, size_t size)
+static size_t	ft_strlcpy(char *dest, const char *src, size_t size)
+{
+	size_t	i;
+	size_t	j;
+
+	i = 0;
+	j = 0;
+	while (src[i] != '\0')
+	{
+		i++;
+	}
+	if (size > 0)
+	{
+		while (src[j] != '\0' && j < size - 1)
+		{
+			dest[j] = src[j];
+			j++;
+		}
+		dest[j] = '\0';
+	}
+	return (i);
+}
+
+static int	mem_all(char **array, int pos, size_t size)
 {
 	int	i;
 
@@ -31,7 +54,7 @@ int	mem_all(char **array, int pos, size_t size)
 	return (0);
 }
 
-int	words_cpy(char **array, char const *s, char c)
+static int	words_cpy(char **array, char const *s, char c)
 {
 	size_t	len;
 	int		i;
@@ -56,7 +79,7 @@ int	words_cpy(char **array, char const *s, char c)
 	return (0);
 }
 
-size_t	count_words(char const *s, char c)
+static size_t	count_words(char const *s, char c)
 {
 	size_t	words;
 

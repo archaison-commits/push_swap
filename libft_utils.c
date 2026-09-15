@@ -56,45 +56,15 @@ int	ft_isdigit(int a)
 	return (ERROR);
 }
 
-int	is_valid_number(char *str)
+char	*ft_strchr(const char *s, int c)
 {
-	size_t	i;
-
-	i = 0;
-	if (str[i] == '-' || str[i] == '+')
-		i++;
-	if (!str[i])
-		return (0);
-	while (str[i])
+	while (*s)
 	{
-		while (ft_strchr(&str[i], ' '))
-			i++;
-		if (!ft_isdigit(str[i]))
-			return (ERROR);
-		i++;
+		if (*s == (char)c)
+			return ((char *)s);
+		s++;
 	}
-	return (SUCCESS);
-}
-
-size_t	ft_strlcpy(char *dest, const char *src, size_t size)
-{
-	size_t	i;
-	size_t	j;
-
-	i = 0;
-	j = 0;
-	while (src[i] != '\0')
-	{
-		i++;
-	}
-	if (size > 0)
-	{
-		while (src[j] != '\0' && j < size - 1)
-		{
-			dest[j] = src[j];
-			j++;
-		}
-		dest[j] = '\0';
-	}
-	return (i);
+	if (c == 0)
+		return ((char *)s);
+	return (0);
 }

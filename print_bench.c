@@ -16,7 +16,7 @@ static char	*algorithm_type(double disorder)
 {
 	if (disorder < 0.2)
 		return ("Adaptive O(n2)");
-	else if (disorder < 0.5)
+	if (disorder < 0.5)
 		return ("Adaptive O(n√n)");
 	return ("Adaptive O(n log n)");
 }
@@ -25,9 +25,9 @@ static char	*strategy_name(t_strategy strategy, t_stacks *stacks)
 {
 	if (strategy == SIMPLE)
 		return ("Simple O(n2)");
-	else if (strategy == MEDIUM)
+	if (strategy == MEDIUM)
 		return ("Medium O(n√n)");
-	else if (strategy == COMPLEX)
+	if (strategy == COMPLEX)
 		return ("Complex O(n log n)");
 	return (algorithm_type(stacks->disorder));
 }
@@ -47,5 +47,5 @@ void	print_bench(t_strategy strategy, t_stacks *stacks)
 	printf("rr: %d ", stacks->c_rr);
 	printf("rra: %d ", stacks->c_rra);
 	printf("rrb: %d ", stacks->c_rrb);
-	printf("rrr: %d ", stacks->c_rrr);
+	printf("rrr: %d\n", stacks->c_rrr);
 }
