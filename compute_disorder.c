@@ -1,33 +1,43 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   compute_disorder.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: brechied <brechied@student.42warsaw.pl>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/09/15 03:30:29 by brechied          #+#    #+#             */
+/*   Updated: 2026/09/15 03:30:32 by brechied         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
-double	compute_disorder(t_stack *a)
+double	compute_disorder(t_stacks *stacks)
 {
-	t_stack *current;
-	t_stack *compare;
-	size_t mistakes;
-	size_t total_pairs;
+	t_stack	*current;
+	t_stack	*compare;
+	size_t	mistakes;
+	size_t	total_pairs;
 
-	// Linked list, because why not.
 	mistakes = 0;
 	total_pairs = 0;
-	current = a;
-	if (!a || current->next == NULL)
-		// Checks if there aren't enough elements to pair.
+	if (!stacks || !stacks->a || stacks->a->next == NULL)
 		return (0);
-	while (current) // Bubble loop-> very bubble very loop;
+	current = stacks->a;
+	while (current)
 	{
 		compare = current->next;
 		while (compare)
 		{
 			total_pairs++;
 			if (current->value > compare->value)
-				// alternative ((*current).value > (*compare).value) pointers <3.
 				mistakes++;
 			compare = compare->next;
 		}
 		current = current->next;
 	}
-	return ((double)mistakes / total_pairs);
+	stacks->disorder = (double)mistakes / total_pairs;
+	return (stacks->disorder);
 }
 /*
 #include "push_swap.h"

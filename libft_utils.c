@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   libft_utils.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: brechied <brechied@student.42warsaw.pl>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/09/15 03:07:03 by brechied          #+#    #+#             */
+/*   Updated: 2026/09/15 03:07:08 by brechied         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 //#include <stdio.h>
 
@@ -40,47 +52,34 @@ int	ft_strcmp(char *s1, char *s2)
 int	ft_isdigit(int a)
 {
 	if (a >= '0' && a <= '9')
-		return (1);
+		return (SUCCESS);
+	return (ERROR);
+}
+
+char	*ft_strchr(const char *s, int c)
+{
+	while (*s)
+	{
+		if (*s == (char)c)
+			return ((char *)s);
+		s++;
+	}
+	if (c == 0)
+		return ((char *)s);
 	return (0);
 }
 
-int	is_valid_number(char *str)
+int	ft_lstsize(t_stack *lst)
 {
-	size_t	i;
+	int	i;
 
 	i = 0;
-	if (str[i] == '-' || str[i] == '+')
-		i++;
-	if (!str[i])
+	if (!lst)
 		return (0);
-	while (str[i])
-	{
-		if (!ft_isdigit(str[i]))
-			return (0);
-		i++;
-	}
-	return (1);
-}
-
-size_t	ft_strlcpy(char *dest, const char *src, size_t size)
-{
-	size_t	i;
-	size_t	j;
-
-	i = 0;
-	j = 0;
-	while (src[i] != '\0')
+	while (lst != NULL)
 	{
 		i++;
-	}
-	if (size > 0)
-	{
-		while (src[j] != '\0' && j < size - 1)
-		{
-			dest[j] = src[j];
-			j++;
-		}
-		dest[j] = '\0';
+		lst = lst->next;
 	}
 	return (i);
 }

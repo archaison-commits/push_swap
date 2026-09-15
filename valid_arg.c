@@ -10,25 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "push_swap.h"
-
-
-char	*cpy_number(char *s1)
-{
-	size_t	i;
-	size_t  j;
-	char	*new_str;
-
-	i = 0;
-	j = 0;
-	while(s1)
-		j++;
-	new_str = malloc(j + 1);
-	while (s1[i++] && new_str[i++])
-		new_str[i] = s1[i];
-	return (new_str);
-}
 
 int	has_digit(char *arg)
 {
@@ -44,29 +26,6 @@ int	has_digit(char *arg)
 	return (ERROR);
 }
 
-int	string_number(char *arg)
-{
-	size_t	i;
-
-	i = 0;
-	while (arg[i])
-	{
-		while (arg[i] == ' ')
-			i++;
-		if (!arg[i])
-			break ;
-		if (ft_isdigit(arg[i]))
-			i++;
-		else if ((arg[i] == '-' || arg[i] == '+')
-			&& ft_isdigit(arg[i + 1])
-			&& (i == 0 || arg[i - 1] == ' '))
-			i++;
-		else
-			return (ERROR);
-	}
-	return (SUCCESS);
-}
-
 int	check_same_number(t_stack *a)
 {
 	t_stack	*current;
@@ -76,7 +35,7 @@ int	check_same_number(t_stack *a)
 	if (!a || current->next == NULL)
 		return (0);
 	while (current)
-		{
+	{
 		compare = current->next;
 		while (compare)
 		{
@@ -88,37 +47,7 @@ int	check_same_number(t_stack *a)
 	}
 	return (SUCCESS);
 }
-/*
-int	is_same_number(int argc, char **argv)
-{
-	size_t	i;
-	size_t	num_l;
-	size_t	start;
-	size_t	length;
-	char	*number;
 
-	i = 1;
-	num_l = 0;
-	start = 0;
-	number = argv[i];
-	while (number[num_l])
-	{
-		while (number[num_l] == ' ')
-			num_l++;
-		if (!number[num_l])
-			break ;
-		start = num_l;
-		while (number[num_l] && number[num_l] != ' ')
-			num_l++;
-		length = num_l - start;
-		while (argv[i])
-		{
-			if (check_same_number_arg(argv[i++], number, start, length) == ERROR)
-			{}
-		}
-	}
-}
-*/
 int	validate_numbers(char **argv)
 {
 	size_t	i;
