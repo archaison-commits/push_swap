@@ -59,37 +59,3 @@ void	rr(t_stacks *stacks)
 	stacks->c_total++;
 	write(1, "rr\n", 3);
 }
-/*
-int main(void)
-{
-    t_stack a;
-    t_stack b;
-    t_stack c;
-    t_stacks stacks;
-
-    a.value = 1;
-    a.next = &b;
-
-    b.value = 2;
-    b.next = &c;
-
-    c.value = 3;
-    c.next = NULL;
-
-    stacks.a = &a;
-
-    printf("Before: %d %d %d\n",
-        stacks.a->value,
-        stacks.a->next->value,
-        stacks.a->next->next->value);
-
-    ra(&stacks);
-
-    printf("After:  %d %d %d\n",
-        stacks.a->value,
-        stacks.a->next->value,
-        stacks.a->next->next->value);
-
-    return (0);
-}
-*/

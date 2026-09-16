@@ -37,7 +37,7 @@ void	choose_strategy(t_strategy strat, double disorder, t_stacks *stacks)
 		complex_sort(stacks);
 	if (strat == ADAPTIVE)
 	{
-		if (ft_lstsize(stacks->a) < 7)
+		if (stack_size(stacks->a) < 7)
 			simple_sort(stacks);
 		else if (disorder < 0.2)
 			simple_sort(stacks);

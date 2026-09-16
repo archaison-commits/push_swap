@@ -2,15 +2,19 @@
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   libft_utils1.c                                     :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: brechied <brechied@student.42warsaw.pl>    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
+/*                                                    +:+ +:+
+	+:+     */
+/*   By: brechied <brechied@student.42warsaw.pl>    +#+  +:+
+	+#+        */
+/*                                                +#+#+#+#+#+
+	+#+           */
 /*   Created: 2026/09/15 03:07:03 by brechied          #+#    #+#             */
 /*   Updated: 2026/09/15 03:07:08 by brechied         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
 //#include <stdio.h>
 
 int	ft_atoi(const char *nptr)
@@ -67,17 +71,4 @@ char	*ft_strchr(const char *s, int c)
 	if (c == 0)
 		return ((char *)s);
 	return (0);
-}
-
-int	ft_lstsize(t_stack *lst)
-{
-	int	i;
-
-	i = 0;
-	while (lst != NULL)
-	{
-		i++;
-		lst = lst->next;
-	}
-	return (i);
 }

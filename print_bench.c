@@ -34,12 +34,9 @@ static char	*strategy_name(t_strategy strategy, t_stacks *stacks)
 
 void	print_bench(t_strategy strategy, t_stacks *stacks)
 {
-	double	dis;
-
-	dis = stacks->disorder;
-	ft_printf("[bench] disorder: %P\n", dis);
-	ft_printf("[bench] strategy: %s\n", strategy_name(strategy, stacks));
-	ft_printf("[bench] total_ops: %d\n", stacks->c_total);
+	ft_printf("[bench] Disorder: %P\n", stacks->disorder);
+	ft_printf("[bench] Strategy: %s\n", strategy_name(strategy, stacks));
+	ft_printf("[bench] Total_ops: %d\n", stacks->c_total);
 	ft_printf("[bench] sa: %d ", stacks->c_sa);
 	ft_printf("sb: %d ", stacks->c_sb);
 	ft_printf("ss: %d ", stacks->c_ss);
