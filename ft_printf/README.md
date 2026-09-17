@@ -11,6 +11,7 @@
 - `%c` Character
 - `%s` String
 - `%p` Pointer
+- `%P` Porcentage
 - `%d` Decimal integer
 - `%i` Integer
 - `%u` Unsigned integer

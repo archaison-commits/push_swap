@@ -44,16 +44,18 @@ int	parse_args(int argc, char **argv, t_stacks *stacks,
 	{
 		if (ft_strcmp(argv[i], "--bench") == 0)
 			stacks->bench = true;
-		else if (parsing_strategy(argv[i]) != ADAPTIVE)
+		else if (is_valid_flag(argv[i]))
 			*strategy = parsing_strategy(argv[i]);
 		else if (ft_strchr(argv[i], ' '))
 		{
 			numbers = ft_split(argv[i], ' ');
-			create_stack(&stacks->a, numbers);
+			if (create_stack(&stacks->a, numbers) == ERROR)
+				return (free_numbers(numbers), ERROR);
 			free_numbers(numbers);
 		}
 		else
-			add_number(&stacks->a, argv[i]);
+			if (add_number(&stacks->a, argv[i]) == ERROR)
+				return (ERROR);
 		i++;
 	}
 	return (SUCCESS);
@@ -74,12 +76,14 @@ void	free_numbers(char **numbers)
 
 int	add_number(t_stack **a, char *str)
 {
-	t_stack	*new_node;
-	int		value;
+	t_stack		*new_node;
+	long		value;
 
-	if (!is_valid_number(str))
+	if (is_valid_number(str) == ERROR)
 		return (ERROR);
 	value = ft_atoi(str);
+	if (value > INT_MAX || value < INT_MIN)
+		return (ERROR);
 	new_node = ft_lstnew(value);
 	if (!new_node)
 		return (ERROR);
@@ -87,14 +91,16 @@ int	add_number(t_stack **a, char *str)
 	return (SUCCESS);
 }
 
-void	create_stack(t_stack **a, char **numbers)
+int	create_stack(t_stack **a, char **numbers)
 {
 	size_t	i;
 
 	i = 0;
 	while (numbers[i])
 	{
-		add_number(a, numbers[i]);
+		if (add_number(a, numbers[i]) == ERROR)
+			return (ERROR);
 		i++;
 	}
+	return (SUCCESS);
 }

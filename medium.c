@@ -98,7 +98,7 @@ void	medium_sort(t_stacks *stacks)
 
 	size = stack_size(stacks->a);
 	chunksize = ft_sqrt(size);
-	chunk = ft_sqrt(size);
+	chunk = chunksize;
 	indexing(stacks);
 	while (stacks->a)
 	{

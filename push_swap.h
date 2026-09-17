@@ -20,6 +20,7 @@
 # include <string.h>
 # include <stdbool.h>
 # include "ft_printf/ft_printf.h"
+# include <limits.h>
 
 typedef enum e_strategy
 {
@@ -58,7 +59,7 @@ typedef struct s_stacks
 }			t_stacks;
 
 // parse
-void		create_stack(t_stack **a, char **numbers);
+int			create_stack(t_stack **a, char **numbers);
 int			add_number(t_stack **a, char *str);
 void		free_numbers(char **numbers);
 int			parse_args(int argc, char **argv, t_stacks *stacks,
@@ -69,7 +70,7 @@ void		print_bench(t_strategy strategy, t_stacks *stacks);
 
 //libft
 int			is_valid_number(char *str);
-int			ft_atoi(const char *nptr);
+long		ft_atoi(const char *nptr);
 char		**ft_split(char const *s, char c);
 int			ft_strcmp(char *s1, char *s2);
 char		*ft_strchr(const char *s, int c);

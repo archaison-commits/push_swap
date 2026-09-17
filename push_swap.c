@@ -20,17 +20,21 @@ int	main(int argc, char **argv)
 	strategy = ADAPTIVE;
 	stacks = (t_stacks){0};
 	if (valid_arg(argc, argv) == ERROR)
-		return (write(1, "ERROR\n", 5), ERROR);
+		return (write(1, "ERROR\n", 6), ERROR);
 	if (parse_args(argc, argv, &stacks, &strategy) == ERROR)
-		return (write(1, "ERROR\n", 5), ERROR);
+	{
+		ft_lstclear(&stacks.a);
+		return (write(1, "ERROR\n", 6), ERROR);
+	}
 	if (check_same_number(stacks.a) == ERROR)
 	{
 		ft_lstclear(&stacks.a);
-		return (write(1, "ERROR\n", 5), ERROR);
+		return (write(1, "ERROR\n", 6), ERROR);
 	}
 	choose_strategy(strategy, compute_disorder(&stacks), &stacks);
 	if (stacks.bench)
 		print_bench(strategy, &stacks);
 	ft_lstclear(&stacks.a);
+	ft_lstclear(&stacks.b);
 	return (0);
 }

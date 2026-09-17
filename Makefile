@@ -1,6 +1,6 @@
 NAME = push_swap
 
-CC = cc
+CC = gcc
 
 CFLAGS = -Wall -Wextra -Werror
 
@@ -12,12 +12,12 @@ SRCS = push_swap.c complex.c compute_disorder.c libft_utils1.c \
 	ft_printf/ft_putnbr_un.c ft_printf/ft_putnbr.c ft_printf/ft_putpointer.c ft_printf/ft_putstr.c \
 	ft_printf/print_porcentage.c \
 
+OBJS = $(SRCS:.c=.o)
 
-all:
-	$(CC) $(CFLAGS) $(SRCS) -o $(NAME)
+all: $(NAME)
 
 $(NAME): $(OBJS)
-	ar rcs $(NAME) $(OBJS)
+	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
 
 %.o: %.c push_swap.h
 	$(CC) $(CFLAGS) -c $< -o $@
