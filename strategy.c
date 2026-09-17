@@ -6,7 +6,7 @@
 /*   By: brechied <brechied@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/15 03:14:42 by brechied          #+#    #+#             */
-/*   Updated: 2026/09/15 22:06:30 by mniwinsk         ###   ########.fr       */
+/*   Updated: 2026/09/15 03:14:46 by brechied         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ t_strategy	parsing_strategy(char *arg)
 
 void	choose_strategy(t_strategy strat, double disorder, t_stacks *stacks)
 {
+	if (disorder == 0)
+		return ;
 	if (strat == SIMPLE)
 		simple_sort(stacks);
 	else if (strat == MEDIUM)
@@ -35,9 +37,7 @@ void	choose_strategy(t_strategy strat, double disorder, t_stacks *stacks)
 		complex_sort(stacks);
 	if (strat == ADAPTIVE)
 	{
-		if (disorder == 0)
-			return ;
-		if (ft_lstsize(stacks->a) == 5)
+		if (stack_size(stacks->a) < 7)
 			simple_sort(stacks);
 		else if (disorder < 0.2)
 			simple_sort(stacks);

@@ -6,7 +6,7 @@
 /*   By: brechied <brechied@student.42.pl>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/31 20:43:32 by brechied          #+#    #+#             */
-/*   Updated: 2026/09/15 22:07:04 by mniwinsk         ###   ########.fr       */
+/*   Updated: 2026/08/31 20:43:36 by brechied         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # include <stdlib.h>
 # include <string.h>
 # include <stdbool.h>
-# include <stdio.h>
+# include "ft_printf/ft_printf.h"
 
 typedef enum e_strategy
 {
@@ -83,7 +83,6 @@ void		ft_lstadd_front(t_stack **lst, t_stack *new);
 void		ft_lstdelone(t_stack *lst);
 t_stack		*ft_lstlast(t_stack *lst);
 void		ft_lstclear(t_stack **lst);
-int			ft_lstsize(t_stack *lst);
 
 // Operator
 void		sa(t_stacks *stacks);

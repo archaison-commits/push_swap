@@ -55,12 +55,6 @@ static int	index_position(t_stack *stack, int chunksize)
 
 static void	ops_on_a(t_stacks *stacks, int size, int idxpos, int chunk)
 {
-	if (stacks->a->index >= chunk && stacks->a->next->index < chunk)
-	{
-		sa(stacks);
-		pb(stacks);
-		return ;
-	}
 	if (stacks->a->index < chunk)
 		pb(stacks);
 	else if (idxpos <= size / 2)
