@@ -7,6 +7,26 @@
 
 Rather than relying on a static, one-size-fits-all algorithm, this implementation evaluates the layout configuration of the input stack right at runtime. The program features an internal selection engine (`strategy.c`) that measures how messy the list is by running a pair inversion check inside `compute_disorder.c`. This generates a disorder rating between `0.0` (fully sorted) and `1.0` (perfectly reversed). Based on this structural rating and the input size, the program dynamically funnels the data stream into the most appropriate sorting algorithm—switching between a minimum-position selection sort (`simple.c`), an active chunk-partitioning engine (`medium.c`), and a bitwise coordinate Radix sort (`complex.c`).
 
+## Description of Operations
+
+The execution engine sorts data by executing a series of unique, assembly-like instructions. The program prints these operational tokens directly to standard output (`stdout`) to allow external evaluation.
+
+The virtual machine operates with a total of 11 atomic instructions divided into four functional categories:
+
+| Opcode | Operation Name | Description |
+| :--- | :--- | :--- |
+| `sa` | **swap a** | Swaps the first two elements at the top of Stack A. (Does nothing if there is 1 or 0 elements). |
+| `sb` | **swap b** | Swaps the first two elements at the top of Stack B. (Does nothing if there is 1 or 0 elements). |
+| `ss` | **swap both** | Executes `sa` and `sb` at the same time. |
+| `pa` | **push a** | Takes the first element at the top of Stack B and moves it to the top of Stack A. (Does nothing if Stack B is empty). |
+| `pb` | **push b** | Takes the first element at the top of Stack A and moves it to the top of Stack B. (Does nothing if Stack A is empty). |
+| `ra` | **rotate a** | Shifts up all elements of Stack A by one position. The top element becomes the new bottom element. |
+| `rb` | **rotate b** | Shifts up all elements of Stack B by one position. The top element becomes the new bottom element. |
+| `rr` | **rotate both** | Executes `ra` and `rb` at the same time. |
+| `rra` | **reverse rotate a** | Shifts down all elements of Stack A by one position. The bottom element becomes the new top element. |
+| `rrb` | **reverse rotate b** | Shifts down all elements of Stack B by one position. The bottom element becomes the new top element. |
+| `rrr` | **reverse rotate both** | Executes `rra` and `rrb` at the same time. |
+
 ---
 
 ## Instructions
@@ -62,7 +82,7 @@ The program handles data states dynamically through the execution switchboard in
 
 **Disorder Percentage = Mistakes / Total Possible Pairs**
 
-Based on this runtime evaluation, the collection streams into one of three dedicated algorithmic tracks:
+Based on this runtime evaluation, the collection streams into one of three dedicated algorithmic tracks. If strategy is not specified program use adaptive strategy.
 
 ### 1. Simple Sort Track (`simple.c`): O(n²)
 * **Trigger Conditions:** Activated automatically if the calculated disorder metric falls below `0.2`.
